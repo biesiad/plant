@@ -1,10 +1,13 @@
 var pubnub = require('../javascripts/lib/pubnub')
 var request = require('superagent')
 
-<dashboard>
-  <h1>dashboard</h1>
 
-  <panel each='{ panels() }' data='{ this }'></panel>
+<dashboard>
+  <div class="container">
+    <h1>dashboard</h1>
+
+    <panel each='{ panels() }' data='{ this }'></panel>
+  </div>
 
   var self = this
   this.panels = function(){
@@ -37,4 +40,5 @@ var request = require('superagent')
       self.dataTypes = res.body
       self.update()
     })
+
 </dashboard>
