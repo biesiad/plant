@@ -1,15 +1,16 @@
 {
-  "name": "tessel",
+  "name": "tessel-plant",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tessel run index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ambient-attx4": "^0.2.5",
-    "climate-si7020": "^0.1.1"
+    "climate-si7020": "^0.1.1",
+    "tessel": "^0.3.22"
   }
 }
