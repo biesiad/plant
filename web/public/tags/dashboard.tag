@@ -34,7 +34,7 @@ var request = require('superagent')
     .get('/api/data-points/current')
     .end(function(err, res) {
       if (err) throw err
-      self.dataTypes = res
+      self.dataTypes = res.body
       self.update()
     })
 </dashboard>
