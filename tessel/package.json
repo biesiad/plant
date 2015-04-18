@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "connect": "tessel wifi -n pubnub-g -p pubnub.com",
     "start": "tessel run index.js"
   },
   "author": "",
