@@ -3,10 +3,19 @@ var request = require('superagent')
 
 
 <dashboard>
-  <div class="container">
-    <h1>dashboard</h1>
+
+  <div class="dashboard container">
+
+    <header class="container">
+      <div class="info">
+        <img src="images/avatar.jpg" class="avatar">
+        <span class="name">AlvinCado</span><br>
+        <span class="locations">San Francisco, CA</span>
+      </div>
+    </header>
 
     <panel each='{ panels() }' data='{ this }'></panel>
+
   </div>
 
   var self = this

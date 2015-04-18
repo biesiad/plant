@@ -1,6 +1,8 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font: 14px "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: 200;
 }
 
 a {
@@ -8,6 +10,80 @@ a {
 }
 
 .container {
-  max-width: 700px;
   margin: 0 auto;
+  padding: 0 20px
+}
+
+.dashboard {
+  padding: 30px 0;
+  position: relative;
+  background: url('/images/dashboard-bg.png');
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+  background: #f0f;
+}
+
+header {
+  .info {
+    color: #fff;
+    margin-bottom: 70px;
+
+    .avatar {
+      float: left;
+      padding-right: 30px;
+    }
+    .name {
+      font-size: 30px;
+    }
+    .location {
+      font-size: 20px;
+    }
+  }
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50% 50%;
+}
+
+.panel {
+  background: #fff;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  clear: both;
+  margin-bottom: 50px;
+  margin: 20px 20px;
+  padding: 10px 10px;
+  border-radius: 5px;
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+    margin-right: 20px;
+  }
+
+  &.light .icon { background-image: url('/images/light-icon.png'); }
+  &.temperature .icon { background-image: url('/images/temperature-icon.png'); }
+  &.humidity .icon { background-image: url('/images/humidity-icon.png'); }
+  &.moisture .icon { background-image: url('/images/moisture-icon.png'); }
+
+  .info {
+    text-align: center;
+    height: 60px;
+    color: #aaa;
+    .value { font-weight: 600; font-size: 30px; }
+    .title { font-size: 20px; }
+  }
 }
