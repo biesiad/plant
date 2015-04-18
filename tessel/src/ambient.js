@@ -1,11 +1,5 @@
 var tessel = require('tessel')
-
-var keys = require("./../keys")
-var pubnub = require("pubnub-hackathon").init({
-    publish_key: keys.pubnub.publish,
-    subscribe_key: keys.pubnub.subscribe
-});
-
+var request = require('superagent')
 var ambientlib = require('ambient-attx4');
 var ambient = ambientlib.use(tessel.port['B']);
 
@@ -23,7 +17,15 @@ var read = function () {
       type: "light",
       value: light.toFixed(8)
     }
-    pubnub.publish({ channel: "plant:datapoint", message: message })
+
+    request
+      .post('http://plant.ngrok.com/api/publish/datapoint')
+      .send({ channel: "plant:datapoint", message: message })
+      .end(function (err, res) {
+        if (err) throw err;
+        console.log("Light level sent");
+      })
+    })
   });
 }
 
