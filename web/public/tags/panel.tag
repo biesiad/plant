@@ -12,4 +12,10 @@ var moment = require('moment')
   this.readableDate = function () {
     return moment(self.time).fromNow()
   }
+  var redrawInterval = setInterval(function () {
+    self.update()
+  })
+  this.on('unmount', function () {
+    clearInterval(redrawInterval)
+  })
 </panel>

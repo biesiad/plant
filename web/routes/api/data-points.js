@@ -15,7 +15,7 @@ dataPoints.byType = function (req, res, next) {
   var start = req.query.start ? new Date(req.query.start) : new Date()
   DataPoint
     .find({type: req.params.type, time: {$lte: start}})
-    .sort({time: -1})
+    .sort({time: 1})
     .limit(limit)
     .exec(function (err, points) {
       if (err) return res.status(500).json({error: err.message})

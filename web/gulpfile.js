@@ -55,7 +55,7 @@ gulp.task('develop', function () {
   livereload.listen()
   nodemon({
     script: 'bin/www',
-    ext: 'js ejs coffee'
+    ext: 'js ejs tag'
   }).on('restart', function () {
     setTimeout(function () {
       livereload.changed(__dirname)
