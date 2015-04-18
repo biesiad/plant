@@ -1,0 +1,6 @@
+node_modules/
+dist
+public/components
+.sass-cache
+*.log
+keys.js
