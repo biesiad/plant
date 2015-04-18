@@ -9,6 +9,7 @@ var sourcemaps = require('gulp-sourcemaps')
 var watchify = require('watchify')
 var util = require('gulp-util')
 var plumber = require('gulp-plumber')
+var envify = require('envify')
 
 gulp.task('sass', function () {
   return sass('./public/styles/')
@@ -37,6 +38,7 @@ gulp.task('build-client', function () {
     packageCache: {},
     fullPaths: true
   })
+  b.transform(envify)
 
   b = watchify(b)
   b.on('update', function () {

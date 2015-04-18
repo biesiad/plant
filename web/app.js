@@ -8,6 +8,9 @@ var bodyParser = require('body-parser')
 var routes = require('./routes/index')
 var api = require('./routes/api')
 
+// set up our pubnub subscribers
+require('./lib/pubnub/subscribe')
+
 var app = express()
 
 // view engine setup
