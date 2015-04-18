@@ -74,7 +74,15 @@ var moment = require('moment')
     pubnub.subscribe({
       channel: 'plant:datapoint',
       callback: function(data) {
-        refresh()
+        data.time = moment().valueOf()
+        if(chart) {
+          chart.addData([data.value], moment(data.time).format('h:mm a'))
+          // TODO: figure out how to remove values that are before
+          // var earliest = moment().subtract(24,'hours')
+          chart.removeData()
+        } else {
+          refresh()
+        }
       }
     })
     refresh()
