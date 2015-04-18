@@ -1,10 +1,13 @@
 var moment = require('moment')
 
 <panel>
-  <h3>{ title }</h3>
-  <h5>{ readableDate() }</h5>
-  <h2>{ value }</h2>
-
+  <div class="panel { title }">
+    <div class="icon"></div>
+    <div class="info">
+      <span class="value">{ value }</span><br>
+      <span class="title">{ title }</span>
+    </div>
+  <div>
   var self = this
   this.readableDate = function () {
     return moment(self.time).fromNow()
