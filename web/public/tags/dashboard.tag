@@ -8,7 +8,9 @@ var request = require('superagent')
 
     <header class="container">
       <div class="info">
-        <img src="images/avatar.jpg" class="avatar">
+        <div class="avatar">
+          <img src="images/avatar.jpg" width="90" height="90">
+        </div>
         <span class="name">AlvinCado</span><br>
         <span class="locations">San Francisco, CA</span>
       </div>
