@@ -24,15 +24,13 @@ dataPoints.byType = function (req, res, next) {
 }
 
 dataPoints.currentData = function (req, res, next) {
-  var limit = req.query.limit || 1
   var start = req.query.start ? new Date(req.query.start) : new Date()
   DataPoint.distinct('type', function (err, types) {
     if (err) return res.status(500).json({error: err.message})
     async.map(types, function (type, done) {
       DataPoint
         .find({type: type, time: {$lte: start}})
-        .sort({time: -1})
-        .limit(limit)
+        .limit(1)
         .exec(function (err, points) {
           if (err) return done(err)
           done(err, points)
@@ -41,7 +39,7 @@ dataPoints.currentData = function (req, res, next) {
       if (err) return res.status(500).json({error: err.message})
       var r = {}
       types.forEach(function (n, idx) {
-        r[n] = points[idx]
+        r[n] = points[idx][0]
       })
       res.json(r)
     })
