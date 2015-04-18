@@ -1,5 +1,5 @@
 var PUBNUB = require('pubnub-browserify')
-var config = require('../../config')
+var config = require('../../../config')
 
 var pubnub = PUBNUB.init({
   ssl: true,  // <- enable TLS Tunneling over TCP

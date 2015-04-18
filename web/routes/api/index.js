@@ -3,6 +3,7 @@ var router = express.Router()
 var dataPoints = require('./data-points')
 
 router.post('/data-point', dataPoints.create)
+router.get('/data-points/current', dataPoints.currentData)
 router.get('/data-points/:type', dataPoints.byType)
 
 module.exports = router
