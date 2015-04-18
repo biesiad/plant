@@ -10,6 +10,7 @@ var watchify = require('watchify')
 var util = require('gulp-util')
 var plumber = require('gulp-plumber')
 var envify = require('envify')
+var riotify = require('riotify')
 
 gulp.task('sass', function () {
   return sass('./public/styles/')
@@ -39,6 +40,7 @@ gulp.task('build-client', function () {
     fullPaths: true
   })
   b.transform(envify)
+  b.transform(riotify)
 
   b = watchify(b)
   b.on('update', function () {
