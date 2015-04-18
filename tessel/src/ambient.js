@@ -1,4 +1,10 @@
-var tessel = require('tessel'); // import tessel
+var tessel = require('tessel')
+
+var keys = require("./../keys")
+var pubnub = require("pubnub-hackathon").init({
+    publish_key: keys.pubnub.publish,
+    subscribe_key: keys.pubnub.subscribe
+});
 
 var ambientlib = require('ambient-attx4');
 var ambient = ambientlib.use(tessel.port['B']);
@@ -9,9 +15,15 @@ var onReady = function () {
 }
 
 var read = function () {
-  ambient.getLightLevel( function(err, ldata) {
+  ambient.getLightLevel( function(err, light) {
     if (err) throw err;
-    console.log("Light level:", ldata.toFixed(8));
+    console.log("Light level:", light.toFixed(8));
+
+    var message = {
+      type: "light",
+      value: light.toFixed(8)
+    }
+    pubnub.publish({ channel: "plant:datapoint", message: message })
   });
 }
 

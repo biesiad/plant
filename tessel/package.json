@@ -12,6 +12,7 @@
   "dependencies": {
     "ambient-attx4": "^0.2.5",
     "climate-si7020": "^0.1.1",
+    "pubnub-hackathon": "0.0.5",
     "tessel": "^0.3.22"
   }
 }
