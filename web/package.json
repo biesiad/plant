@@ -16,6 +16,8 @@
     "morgan": "~1.5.0",
     "pubnub": "^3.7.10",
     "pubnub-browserify": "^3.3.0",
+    "riot": "^2.0.14",
+    "riotify": "0.0.9",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
