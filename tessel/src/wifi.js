@@ -5,6 +5,7 @@ var security = 'wpa2'
 var timeouts = 0
 
 var connect = function (cb) {
+  return cb()
   if (!wifi.isConnected()) {
     wifi.connect({
       security: security,

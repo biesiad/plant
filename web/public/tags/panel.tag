@@ -15,21 +15,21 @@ var moment = require('moment')
   this.userValue = function () {
     switch(self.title) {
       case 'light':
-        return self.value < 0.1
+        return self.value < 0.01
                ? 'dark'
-               :self.value < 0.2
+               :self.value < 0.02
                ? 'dim'
-               :self.value < 0.5
-               ? 'dusk'
-               :self.value < 0.7
+               :self.value < 0.05
+               ? 'normal'
+               :self.value < 0.1
                ? 'light'
-               :self.value < 0.8
+               :self.value < 0.6
                ? 'bright'
                : 'very bright'
       case 'humidity':
         return Math.round(self.value) + '%'
       case 'moisture':
-        return Math.round((self.value * 1.1) * 0.1) + '%'
+        return Math.round(self.value * 0.05) + '%'
       case 'temperature':
         return Math.round(self.value) + ' C'
     }

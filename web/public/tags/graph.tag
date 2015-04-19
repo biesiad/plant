@@ -17,7 +17,7 @@ var moment = require('moment')
   var multiplier = function(val){
     switch(title) {
       case 'light':
-        return val * 1000
+        return val * 5000
       case 'moisture':
         return val
       default:

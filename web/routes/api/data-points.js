@@ -4,6 +4,7 @@ var dataPoints = {}
 
 dataPoints.create = function (req, res, next) {
   if (req.body.time) req.body.time = new Date(req.body.time)
+  if (!req.body.value) return res.status(406).json({error : 'must specify value'});
   var point = new DataPoint(req.body)
   point.save(function (err) {
     if (err) return res.status(406).json({error: err.message})
