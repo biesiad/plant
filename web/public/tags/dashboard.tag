@@ -18,6 +18,12 @@ var request = require('superagent')
 
     <panel each='{ panels() }' data='{ this }'></panel>
 
+    <footer>
+      <ul>
+        <li class="home"></li>
+        <li class="gallery"></li>
+        <li class="settings"></li>
+    </footer>
   </div>
 
   var self = this
