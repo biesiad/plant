@@ -13,7 +13,7 @@ var connect = function (cb) {
       timeout: 30
     })
     var check = setInterval(function () {
-      if (wifi.isConnected()) {
+      if (wifi.isConnected() && cb) {
         cb(wifi.connection())
         clearInterval(check)
       } else {

@@ -16,11 +16,14 @@ var request = require('superagent')
       </div>
     </header>
 
-    <panel each='{ panels() }' data='{ this }'></panel>
+    <panel each='{ panels() }' data='{ this }' onclick={ panelSelected.bind(null, this.title) }></panel>
 
   </div>
 
   var self = this
+  panelSelected = function(type) {
+    window.location.href = '/' + type
+  }
   this.panels = function(){
     return Object.keys(self.dataTypes).map(function(type) {
       var d = self.dataTypes[type]

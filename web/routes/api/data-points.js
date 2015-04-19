@@ -3,6 +3,7 @@ var async = require('async')
 var dataPoints = {}
 
 dataPoints.create = function (req, res, next) {
+  if (req.body.time) req.body.time = new Date(req.body.time)
   var point = new DataPoint(req.body)
   point.save(function (err) {
     if (err) return res.status(406).json({error: err.message})
@@ -13,8 +14,11 @@ dataPoints.create = function (req, res, next) {
 dataPoints.byType = function (req, res, next) {
   var limit = req.query.limit || 20
   var start = req.query.start ? new Date(req.query.start) : new Date()
+  var end = req.query.end ? new Date(req.query.end) : null
+  var query = {type: req.params.type, time: {$lte: start}}
+  if (end) query.time.$gte = end
   DataPoint
-    .find({type: req.params.type, time: {$lte: start}})
+    .find(query)
     .sort({time: 1})
     .limit(limit)
     .exec(function (err, points) {

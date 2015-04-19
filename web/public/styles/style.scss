@@ -7,6 +7,13 @@ body {
   font-weight: 200;
 }
 
+/* don't allow selection */
+* {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 a {
   color: #00B7FF;
 }
