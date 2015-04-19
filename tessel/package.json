@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "ambient-attx4": "^0.2.5",
-    "climate-si7020": "^0.1.1",
-    "superagent": "^1.2.0"
+    "climate-si7020": "^0.1.1"
   }
 }

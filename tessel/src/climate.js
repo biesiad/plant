@@ -17,7 +17,7 @@ var read = function () {
 
 onTemperatureRead = function (err, temperature) {
   if (err) throw err;
-  console.log('Degrees:', temperature.toFixed(4) + 'F')
+  console.log('Temperature:', temperature.toFixed(4) + 'F')
   publish('temperature', temperature.toFixed(4))
 }
 

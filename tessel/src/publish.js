@@ -1,23 +1,22 @@
-var http = require('http')
-var qs = require('querystring')
-var request = require('superagent')
+// var request = require('superagent')
 
-var queue = []
+// var queue = []
 
-var interval = setInterval(function() {
-  var url = 'http://plant.ngrok.com/api/publish/datapoint'
-
-  request
-    .post(url)
-    .send(queue)
-    .timeout(4000)
-    .end(function (err) {
-      if (err) return console.error('error publishing:', err.message)
-      console.log("completed publish.");
-    })
-  queue = []
-}, 5000);
+// setInterval(function() {
+//
+//   var url = 'http://plant.ngrok.com/api/publish/datapoint'
+//
+//   request
+//     .post(url)
+//     .send(queue)
+//     .timeout(4000)
+//     .end(function (err) {
+//       if (err) return console.error('error publishing:', err.message)
+//       console.log("completed publish.")
+//     })
+//   queue = []
+// }, 5000);
 
 module.exports = function(type, value){
-  queue.push({type: type, value: value, time: new Date().valueOf() });
+  // queue.push({type: type, value: value, time: new Date().valueOf() })
 }

@@ -8,10 +8,26 @@ var moment = require('moment')
     <canvas id="graph"></canvas>
   </div>
 
+  var numHours = 2
   var datapoints = []
   var labels = []
   var title = ''
   var chart
+
+  var multiplier = function(val){
+    switch(title) {
+      case 'light':
+        return val * 1000
+      case 'moisture':
+        return val
+      default:
+        return val * 10
+    }
+  }
+
+  var steps = 10
+  var width = 100
+  var start = 0
 
   var drawgraph = function () {
     console.log('drawing graph');
@@ -31,16 +47,21 @@ var moment = require('moment')
       ]
     }
     var options = {
+      animation: false,
       scaleShowGridLines : true,
       bezierCurve : true,
       bezierCurveTension: 0.4,
       pointDot : true,
       pointDotRadius : 4,
       datasetFill : false,
-      showScale: true,
+      showScale: false,
       maintainAspectRatio: true,
       responsive: true,
-      scaleShowHorizontalLines: false
+      scaleShowHorizontalLines: false,
+      scaleOverride: true,
+      scaleSteps: steps,
+      scaleStepWidth: width,
+      scaleStartValue: start,
     }
     var cvs = document.getElementById('graph')
     var ctx = cvs.getContext('2d')
@@ -53,15 +74,17 @@ var moment = require('moment')
       .get('/api/data-points/' + type)
       .send({
         start: moment().valueOf(),
-        end: moment().subtract(24,'hours').valueOf()
+        end: moment().subtract(numHours,'hours').valueOf()
       })
       .end(function (err, res) {
         if (err) throw err
         console.log(res.body)
         if (!res.body.points.length) return
         var points = res.body.points
-        datapoints = points.map(function(p) { return p.value })
         title = points[0].type
+        datapoints = points.map(function(p) {
+          return multiplier(p.value)
+        })
         labels = points.map(function(p) {
           return moment(p.time).format('h:mm a')
         })
@@ -69,8 +92,9 @@ var moment = require('moment')
       })
   }
 
+  var updateInterval
   this.on('mount', function() {
-    console.log('subscribing to plant:datapoint updates')
+    /*console.log('subscribing to plant:datapoint updates')
     pubnub.subscribe({
       channel: 'plant:datapoint',
       callback: function(data) {
@@ -84,9 +108,15 @@ var moment = require('moment')
           refresh()
         }
       }
-    })
+    })*/
+    updateInterval = setInterval(function() {
+      refresh()
+    }, 1000)
     refresh()
   })
 
+  this.on('unmount', function() {
+    clearInterval(updateInterval)
+  })
 
 </graph>

@@ -19,11 +19,11 @@ dataPoints.byType = function (req, res, next) {
   if (end) query.time.$gte = end
   DataPoint
     .find(query)
-    .sort({time: 1})
+    .sort({time: -1})
     .limit(limit)
     .exec(function (err, points) {
       if (err) return res.status(500).json({error: err.message})
-      return res.json({points: points})
+      return res.json({points: points.reverse()})
     })
 }
 

@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "DEBUG=plant* gulp"
+    "start": "DEBUG=plant* gulp",
+    "tessel": "node tessel.js"
   },
   "dependencies": {
     "async": "^0.9.0",

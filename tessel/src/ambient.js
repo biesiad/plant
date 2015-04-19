@@ -12,7 +12,7 @@ var onReady = function () {
 var read = function () {
   ambient.getLightLevel( function(err, light) {
     if (err) throw err;
-    console.log("Light level:", light.toFixed(8));
+    console.log("Light:", light.toFixed(8));
 
     publish('light',light.toFixed(8))
   });
