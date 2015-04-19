@@ -31,7 +31,7 @@ var moment = require('moment')
 
   var drawgraph = function () {
     console.log('drawing graph');
-    var color = '#3EB334'
+    var color = '#DD5555'
     var data = {
       labels: labels,
       datasets: [

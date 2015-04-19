@@ -4,35 +4,11 @@ var request = require('superagent')
 
 <dashboard>
 
-  <div class="dashboard container">
+  <header></header>
 
-    <header class="container">
-      <div class="info">
-        <div class="avatar">
-          <img src="images/avatar.jpg" width="90" height="90">
-        </div>
-        <span class="name">AlvinCado</span><br>
-        <span class="locations">San Francisco, CA</span><br>
-        <div>
-          <ul>
-            <li class="views">385</li>
-            <li class="follows">12,024</li>
-            <li class="likes">1,068</li>
-          </ul>
-        </div>
-      </div>
+  <panel each='{ panels() }' data='{ this }' onclick={ panelSelected.bind(null, this.title) }></panel>
 
-    </header>
-
-    <panel each='{ panels() }' data='{ this }' onclick={ panelSelected.bind(null, this.title) }></panel>
-
-    <footer>
-      <ul>
-        <li class="home"></li>
-        <li class="gallery"></li>
-        <li class="settings"></li>
-    </footer>
-  </div>
+  <footer></footer>
 
   var self = this
   panelSelected = function(type) {
