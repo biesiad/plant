@@ -1,6 +1,15 @@
 
-.graph-container {
-  width:90%;
-  height:250px;
-  margin: 100px auto 30px;
+.graph {
+  .graph-container {
+    width:90%;
+    height:250px;
+    margin: 50px auto 30px;
+  }
+
+  .title {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+  }
 }
